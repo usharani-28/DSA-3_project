@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>THREAT KILL CHAIN CORRELATION ENGINE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN SCREEN
+    ====================================================== -->
+
+    <div id="loginScreen" class="login-screen">
+
+        <div class="login-card">
+
+            <div class="danger-line"></div>
+
+            <div class="logo">
+                ⚠ THREAT INTELLIGENCE SYSTEM
+            </div>
+
+            <div class="main-title">
+                THREAT KILL CHAIN
+                <span>CORRELATION ENGINE</span>
+            </div>
+
+            <div class="title-line">
+                // ADVANCED THREAT INTELLIGENCE & EVENT CORRELATION //
+            </div>
+
+            <div class="login-subtitle">
+                SECURE AUTHENTICATION MONITORING
+            </div>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label>USERNAME / USER ID</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter user ID"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>PASSWORD</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span>AUTHENTICATE</span>
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div id="loginMessage" class="login-message"></div>
+
+            <div class="demo-info">
+                <div>AUTHORIZED DEMO ACCESS</div>
+                <small>
+                    Authentication attempts are monitored by the
+                    Threat Correlation Engine.
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN MONITORING DASHBOARD
+    ====================================================== -->
+
+    <div id="monitor" class="monitor hidden">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-warning">⚠</div>
+
+                <div>
+                    <div class="brand-title">
+                        THREAT KILL CHAIN
+                    </div>
+
+                    <div class="brand-subtitle">
+                        CORRELATION ENGINE
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    LIVE THREAT MONITORING
+                </span>
+
+            </div>
+
+            <button id="resetBtn" class="reset-btn">
+                RESET MONITOR
+            </button>
+
+        </header>
+
+
+        <!-- BIG DASHBOARD TITLE -->
+
+        <section class="dashboard-heading">
+
+            <div class="dashboard-title">
+                THREAT KILL CHAIN
+                <span>CORRELATION ENGINE</span>
+            </div>
+
+            <div class="dashboard-description">
+                REAL-TIME AUTHENTICATION EVENT ANALYSIS
+                // DSA-BASED THREAT CORRELATION //
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-label">
+                    FAILED ATTEMPTS
+                </div>
+
+                <div id="attemptCount" class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-footer">
+                    AUTH EVENTS
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-label">
+                    THREAT SCORE
+                </div>
+
+                <div id="riskScore" class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-footer">
+                    RISK LEVEL
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-label">
+                    CORRELATION
+                </div>
+
+                <div id="correlationScore" class="stat-value">
+                    0%
+                </div>
+
+                <div class="stat-footer">
+                    PATTERN MATCH
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-label">
+                    SYSTEM STATUS
+                </div>
+
+                <div id="systemStatus" class="stat-value status-text">
+                    SAFE
+                </div>
+
+                <div class="stat-footer">
+                    ENGINE STATE
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MAIN GRID
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- EVENT STREAM -->
+
+            <div class="panel event-panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">▣</span>
+                        LIVE SECURITY EVENT STREAM
+                    </div>
+
+                    <span class="live-label">
+                        ● LIVE
+                    </span>
+
+                </div>
+
+                <div id="eventStream" class="event-stream">
+
+                    <div class="empty-state">
+                        WAITING FOR AUTHENTICATION EVENTS...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IP INTELLIGENCE -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">◉</span>
+                        SOURCE IP INTELLIGENCE
+                    </div>
+
+                </div>
+
+                <div class="ip-box">
+
+                    <div class="ip-label">
+                        DETECTED SOURCE
+                    </div>
+
+                    <div id="sourceIP" class="source-ip">
+                        WAITING...
+                    </div>
+
+                    <div class="ip-status">
+                        MONITORING AUTHENTICATION SOURCE
+                    </div>
+
+                </div>
+
+                <div class="intelligence-grid">
+
+                    <div>
+                        <span>EVENTS</span>
+                        <strong id="ipEvents">0</strong>
+                    </div>
+
+                    <div>
+                        <span>USERS</span>
+                        <strong id="uniqueUsers">0</strong>
+                    </div>
+
+                    <div>
+                        <span>STATUS</span>
+                        <strong id="ipThreatStatus">
+                            NORMAL
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DSA PIPELINE -->
+
+            <div class="panel full-width">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">⚙</span>
+                        DSA THREAT PROCESSING PIPELINE
+                    </div>
+
+                </div>
+
+                <div class="pipeline">
+
+                    <div class="pipeline-node">
+                        <strong>ARRAYLIST</strong>
+                        <small>EVENT STORAGE</small>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <div class="pipeline-node">
+                        <strong>HASHMAP</strong>
+                        <small>IP CORRELATION</small>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <div class="pipeline-node">
+                        <strong>QUEUE</strong>
+                        <small>EVENT ORDER</small>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <div class="pipeline-node">
+                        <strong>STACK</strong>
+                        <small>RECENT ACTIONS</small>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <div class="pipeline-node danger-node">
+                        <strong>CORRELATION</strong>
+                        <small>THREAT DETECTION</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- KILL CHAIN -->
+
+            <div class="panel full-width">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">☠</span>
+                        THREAT KILL CHAIN
+                    </div>
+
+                </div>
+
+                <div class="kill-chain">
+
+                    <div class="kill-stage">
+                        <div class="stage-number">01</div>
+                        <strong>RECONNAISSANCE</strong>
+                        <small>USER / SOURCE OBSERVED</small>
+                    </div>
+
+                    <div class="chain-arrow">→</div>
+
+                    <div class="kill-stage">
+                        <div class="stage-number">02</div>
+                        <strong>INITIAL ACCESS</strong>
+                        <small>AUTH ATTEMPT</small>
+                    </div>
+
+                    <div class="chain-arrow">→</div>
+
+                    <div class="kill-stage">
+                        <div class="stage-number">03</div>
+                        <strong>CREDENTIAL ACCESS</strong>
+                        <small>FAILED CREDENTIALS</small>
+                    </div>
+
+                    <div class="chain-arrow">→</div>
+
+                    <div class="kill-stage">
+                        <div class="stage-number">04</div>
+                        <strong>PRIVILEGE ESCALATION</strong>
+                        <small>SUSPICIOUS PATTERN</small>
+                    </div>
+
+                    <div class="chain-arrow">→</div>
+
+                    <div class="kill-stage">
+                        <div class="stage-number">05</div>
+                        <strong>COMMAND & CONTROL</strong>
+                        <small>THREAT CORRELATED</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">◷</span>
+                        ATTACK TIMELINE
+                    </div>
+
+                </div>
+
+                <div id="timeline" class="timeline">
+
+                    <div class="empty-state">
+                        NO THREAT EVENTS DETECTED
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- THREAT ANALYSIS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">⚠</span>
+                        THREAT ANALYSIS
+                    </div>
+
+                </div>
+
+                <div id="threatAlert" class="threat-alert safe-alert">
+
+                    <div class="alert-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>
+                            SYSTEM SECURE
+                        </strong>
+
+                        <p>
+                            No suspicious authentication
+                            pattern detected.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="detection-reasons">
+
+                    <div class="reason">
+                        <span>●</span>
+                        REPEATED LOGIN FAILURES
+                    </div>
+
+                    <div class="reason">
+                        <span>●</span>
+                        SOURCE IP CORRELATION
+                    </div>
+
+                    <div class="reason">
+                        <span>●</span>
+                        MULTIPLE ACCOUNT TARGETING
+                    </div>
+
+                    <div class="reason">
+                        <span>●</span>
+                        TEMPORAL EVENT PATTERN
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- THREAT SCORE -->
+
+            <div class="panel full-width">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <span class="panel-icon">▰</span>
+                        THREAT LEVEL
+                    </div>
+
+                    <div id="riskLabel" class="risk-label">
+                        LOW
+                    </div>
+
+                </div>
+
+                <div class="score-container">
+
+                    <div class="score-bar">
+
+                        <div
+                            id="scoreFill"
+                            class="score-fill"
+                            style="width:0%"
+                        ></div>
+
+                    </div>
+
+                    <div class="score-scale">
+                        <span>SAFE</span>
+                        <span>LOW</span>
+                        <span>MEDIUM</span>
+                        <span>HIGH</span>
+                        <span>CRITICAL</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                THREAT INTELLIGENCE KILL-CHAIN CORRELATION ENGINE
+            </span>
+
+            <span>
+                DSA + EVENT CORRELATION + AUTHENTICATION ANALYSIS
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

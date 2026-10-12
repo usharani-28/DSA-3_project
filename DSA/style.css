@@ -1,0 +1,1865 @@
+/* ============================================================
+   THREAT INTELLIGENCE KILL-CHAIN CORRELATION ENGINE
+   DANGEROUS SOC / CYBERSECURITY THEME
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Share+Tech+Mono&display=swap');
+
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+
+:root {
+
+    --black: #050505;
+    --black2: #090909;
+    --panel: #101010;
+    --panel2: #151515;
+
+    --red: #ff1e2d;
+    --dark-red: #8b0000;
+    --blood: #e50914;
+
+    --orange: #ff6a00;
+    --yellow: #ffb000;
+
+    --white: #f4f4f4;
+    --gray: #888;
+    --dark-gray: #272727;
+
+    --green: #00e676;
+    --cyan: #00d9ff;
+
+    --border: rgba(255, 30, 45, 0.32);
+
+    --shadow:
+        0 0 20px rgba(229, 9, 20, 0.15);
+
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1a0808 0%,
+            #080808 35%,
+            #030303 100%
+        );
+
+    color: var(--white);
+
+    font-family:
+        'Share Tech Mono',
+        monospace;
+
+    overflow-x: hidden;
+}
+
+
+/* ============================================================
+   SCANLINE EFFECT
+============================================================ */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,0.018) 4px
+        );
+
+}
+
+
+/* ============================================================
+   LOGIN SCREEN
+============================================================ */
+
+.login-screen {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+
+}
+
+
+.login-screen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(229,9,20,0.18),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+}
+
+
+.login-card {
+
+    width: min(650px, 100%);
+
+    position: relative;
+
+    padding: 45px 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,25,0.97),
+            rgba(7,7,7,0.98)
+        );
+
+    border: 1px solid rgba(255,30,45,0.4);
+
+    box-shadow:
+        0 0 0 1px rgba(255,30,45,0.05),
+        0 0 50px rgba(229,9,20,0.18),
+        inset 0 0 35px rgba(229,9,20,0.035);
+
+    overflow: hidden;
+
+}
+
+
+.login-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--red),
+            var(--orange),
+            var(--red),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px var(--red);
+
+}
+
+
+.danger-line {
+
+    height: 4px;
+
+    width: 70px;
+
+    margin: 0 auto 22px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            var(--red) 0px,
+            var(--red) 8px,
+            #111 8px,
+            #111 16px
+        );
+
+}
+
+
+/* ============================================================
+   LOGIN LOGO
+============================================================ */
+
+.logo {
+
+    text-align: center;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: var(--orange);
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+
+}
+
+
+/* ============================================================
+   HUGE MAIN TITLE
+============================================================ */
+
+.main-title {
+
+    text-align: center;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    line-height: 1.05;
+
+    font-size: clamp(
+        30px,
+        5vw,
+        52px
+    );
+
+    color: var(--red);
+
+    text-shadow:
+        0 0 5px rgba(255,30,45,0.9),
+        0 0 15px rgba(229,9,20,0.7),
+        0 0 35px rgba(229,9,20,0.4);
+
+}
+
+
+.main-title span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--orange);
+
+    font-size: 0.52em;
+
+    letter-spacing: 7px;
+
+    text-shadow:
+        0 0 8px rgba(255,106,0,0.8),
+        0 0 20px rgba(255,106,0,0.35);
+
+}
+
+
+.title-line {
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-top: 18px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.login-subtitle {
+
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    border-top: 1px solid #222;
+
+    border-bottom: 1px solid #222;
+
+    padding: 12px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* ============================================================
+   INPUTS
+============================================================ */
+
+.input-group {
+
+    margin-bottom: 22px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    color: var(--orange);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #070707;
+
+    border: 1px solid #333;
+
+    border-left: 3px solid #555;
+
+    color: white;
+
+    font-family:
+        'Share Tech Mono',
+        monospace;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.25s;
+
+}
+
+
+.input-group input:focus {
+
+    border-color: var(--red);
+
+    border-left-color: var(--orange);
+
+    box-shadow:
+        0 0 15px rgba(229,9,20,0.15);
+
+}
+
+
+.input-group input::placeholder {
+
+    color: #555;
+
+}
+
+
+/* ============================================================
+   LOGIN BUTTON
+============================================================ */
+
+.login-btn {
+
+    width: 100%;
+
+    padding: 16px;
+
+    margin-top: 8px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border: 1px solid var(--red);
+
+    background:
+        linear-gradient(
+            90deg,
+            #3a0508,
+            #170303
+        );
+
+    color: white;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+.login-btn:hover {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--dark-red),
+            #390000
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,30,45,0.35);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ============================================================
+   LOGIN MESSAGE
+============================================================ */
+
+.login-message {
+
+    min-height: 25px;
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 12px;
+
+}
+
+
+.demo-info {
+
+    margin-top: 28px;
+
+    padding: 14px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #252525;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.demo-info div {
+
+    color: var(--red);
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+}
+
+
+.demo-info small {
+
+    color: #666;
+
+}
+
+
+/* ============================================================
+   HIDDEN
+============================================================ */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* ============================================================
+   MAIN MONITOR
+============================================================ */
+
+.monitor {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            rgba(229,9,20,0.12),
+            transparent 45%
+        );
+
+}
+
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+
+.topbar {
+
+    min-height: 78px;
+
+    padding: 15px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background:
+        rgba(5,5,5,0.95);
+
+    border-bottom:
+        1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.brand-warning {
+
+    font-size: 30px;
+
+    color: var(--red);
+
+    text-shadow:
+        0 0 15px var(--red);
+
+}
+
+
+.brand-title {
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+}
+
+
+.brand-subtitle {
+
+    color: var(--red);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    margin-top: 3px;
+
+}
+
+
+.system-status {
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.status-dot {
+
+    display: inline-block;
+
+    width: 7px;
+
+    height: 7px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px var(--green);
+
+    margin-right: 7px;
+
+}
+
+
+.reset-btn {
+
+    padding: 10px 16px;
+
+    border: 1px solid #444;
+
+    background: #0d0d0d;
+
+    color: #aaa;
+
+    font-family:
+        'Share Tech Mono',
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+}
+
+
+.reset-btn:hover {
+
+    border-color: var(--red);
+
+    color: var(--red);
+
+}
+
+
+/* ============================================================
+   DASHBOARD HEADING
+============================================================ */
+
+.dashboard-heading {
+
+    padding:
+        40px 30px 25px;
+
+    text-align: center;
+
+}
+
+
+.dashboard-title {
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    line-height: 1.05;
+
+    font-size: clamp(
+        24px,
+        4vw,
+        40px
+    );
+
+    color: var(--red);
+
+    text-shadow:
+        0 0 5px rgba(255,30,45,0.8),
+        0 0 15px rgba(229,9,20,0.6),
+        0 0 30px rgba(229,9,20,0.3);
+
+}
+
+
+.dashboard-title span {
+
+    display: block;
+
+    color: var(--orange);
+
+    font-size: 0.52em;
+
+    margin-top: 7px;
+
+    letter-spacing: 7px;
+
+}
+
+
+.dashboard-description {
+
+    color: #666;
+
+    margin-top: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* ============================================================
+   STATS
+============================================================ */
+
+.stats-grid {
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 0 25px 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.stat-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #0b0b0b
+        );
+
+    border: 1px solid #292929;
+
+    border-top:
+        2px solid var(--red);
+
+    padding: 20px;
+
+    box-shadow:
+        inset 0 0 25px rgba(229,9,20,0.025);
+
+}
+
+
+.stat-label {
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.stat-value {
+
+    margin-top: 8px;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color: white;
+
+}
+
+
+.stat-footer {
+
+    margin-top: 6px;
+
+    font-size: 9px;
+
+    color: #555;
+
+}
+
+
+.status-text {
+
+    color: var(--green);
+
+}
+
+
+/* ============================================================
+   DASHBOARD GRID
+============================================================ */
+
+.dashboard-grid {
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding: 0 25px 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.35fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+.full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* ============================================================
+   PANELS
+============================================================ */
+
+.panel {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19,19,19,0.98),
+            rgba(9,9,9,0.98)
+        );
+
+    border: 1px solid #292929;
+
+    box-shadow:
+        var(--shadow);
+
+    min-width: 0;
+
+}
+
+
+.panel:hover {
+
+    border-color:
+        rgba(255,30,45,0.35);
+
+}
+
+
+.panel-header {
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid #242424;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.panel-title {
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #ddd;
+
+}
+
+
+.panel-icon {
+
+    color: var(--red);
+
+    margin-right: 8px;
+
+}
+
+
+.live-label {
+
+    color: var(--red);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* ============================================================
+   EVENT STREAM
+============================================================ */
+
+.event-stream {
+
+    max-height: 330px;
+
+    overflow-y: auto;
+
+}
+
+
+.event-row {
+
+    display: grid;
+
+    grid-template-columns:
+        80px 1fr 130px;
+
+    gap: 10px;
+
+    padding: 13px 18px;
+
+    border-bottom: 1px solid #181818;
+
+    font-size: 11px;
+
+}
+
+
+.event-row:hover {
+
+    background:
+        rgba(229,9,20,0.05);
+
+}
+
+
+.event-id {
+
+    color: var(--orange);
+
+}
+
+
+.event-user {
+
+    color: white;
+
+}
+
+
+.event-ip {
+
+    color: var(--cyan);
+
+}
+
+
+.event-status {
+
+    color: var(--red);
+
+    font-weight: bold;
+
+}
+
+
+.empty-state {
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #444;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* ============================================================
+   IP INTELLIGENCE
+============================================================ */
+
+.ip-box {
+
+    margin: 18px;
+
+    padding: 22px;
+
+    background:
+        #070707;
+
+    border:
+        1px solid #292929;
+
+}
+
+
+.ip-label {
+
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.source-ip {
+
+    margin-top: 10px;
+
+    color: var(--cyan);
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 0 10px rgba(0,217,255,0.35);
+
+}
+
+
+.ip-status {
+
+    margin-top: 7px;
+
+    color: #555;
+
+    font-size: 9px;
+
+}
+
+
+.intelligence-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top: 1px solid #222;
+
+}
+
+
+.intelligence-grid div {
+
+    padding: 15px;
+
+    text-align: center;
+
+    border-right: 1px solid #222;
+
+}
+
+
+.intelligence-grid span {
+
+    display: block;
+
+    color: #555;
+
+    font-size: 8px;
+
+}
+
+
+.intelligence-grid strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: white;
+
+    font-size: 14px;
+
+}
+
+
+/* ============================================================
+   DSA PIPELINE
+============================================================ */
+
+.pipeline {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 28px;
+
+}
+
+
+.pipeline-node {
+
+    min-width: 145px;
+
+    padding: 18px 12px;
+
+    text-align: center;
+
+    background:
+        #0b0b0b;
+
+    border: 1px solid #3a3a3a;
+
+    position: relative;
+
+}
+
+
+.pipeline-node::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: var(--orange);
+
+}
+
+
+.pipeline-node strong {
+
+    display: block;
+
+    color: white;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 11px;
+
+}
+
+
+.pipeline-node small {
+
+    display: block;
+
+    color: #666;
+
+    margin-top: 7px;
+
+    font-size: 8px;
+
+}
+
+
+.danger-node {
+
+    border-color:
+        rgba(255,30,45,0.6);
+
+    box-shadow:
+        0 0 18px rgba(229,9,20,0.15);
+
+}
+
+
+.danger-node::before {
+
+    background: var(--red);
+
+}
+
+
+.pipeline-arrow {
+
+    color: var(--red);
+
+    font-size: 24px;
+
+}
+
+
+/* ============================================================
+   KILL CHAIN
+============================================================ */
+
+.kill-chain {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 30px 18px;
+
+    overflow-x: auto;
+
+}
+
+
+.kill-stage {
+
+    min-width: 170px;
+
+    padding: 18px 12px;
+
+    background: #0a0a0a;
+
+    border: 1px solid #333;
+
+    text-align: center;
+
+    transition: 0.3s;
+
+}
+
+
+.kill-stage:hover {
+
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 20px rgba(229,9,20,0.15);
+
+}
+
+
+.stage-number {
+
+    color: var(--red);
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+}
+
+
+.kill-stage strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 10px;
+
+    color: white;
+
+}
+
+
+.kill-stage small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #555;
+
+    font-size: 8px;
+
+}
+
+
+.chain-arrow {
+
+    color: var(--orange);
+
+    font-size: 20px;
+
+}
+
+
+/* ============================================================
+   TIMELINE
+============================================================ */
+
+.timeline {
+
+    padding: 18px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    padding: 10px 10px 10px 25px;
+
+    border-left: 1px solid #333;
+
+    font-size: 10px;
+
+}
+
+
+.timeline-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -4px;
+
+    top: 14px;
+
+    width: 7px;
+
+    height: 7px;
+
+    background: var(--red);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px var(--red);
+
+}
+
+
+.timeline-time {
+
+    color: #555;
+
+}
+
+
+.timeline-text {
+
+    color: #bbb;
+
+    margin-top: 4px;
+
+}
+
+
+/* ============================================================
+   THREAT ALERT
+============================================================ */
+
+.threat-alert {
+
+    margin: 18px;
+
+    padding: 20px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    border: 1px solid #333;
+
+}
+
+
+.safe-alert {
+
+    border-color:
+        rgba(0,230,118,0.25);
+
+    background:
+        rgba(0,230,118,0.03);
+
+}
+
+
+.danger-alert {
+
+    border-color:
+        rgba(255,30,45,0.7);
+
+    background:
+        rgba(229,9,20,0.08);
+
+    box-shadow:
+        0 0 25px rgba(229,9,20,0.12);
+
+}
+
+
+.alert-icon {
+
+    font-size: 28px;
+
+    color: var(--green);
+
+}
+
+
+.danger-alert .alert-icon {
+
+    color: var(--red);
+
+}
+
+
+.threat-alert strong {
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 12px;
+
+}
+
+
+.threat-alert p {
+
+    color: #777;
+
+    margin-top: 6px;
+
+    font-size: 9px;
+
+}
+
+
+/* ============================================================
+   DETECTION REASONS
+============================================================ */
+
+.detection-reasons {
+
+    padding:
+        0 18px 20px;
+
+}
+
+
+.reason {
+
+    padding: 9px 0;
+
+    border-bottom:
+        1px solid #1d1d1d;
+
+    color: #777;
+
+    font-size: 9px;
+
+}
+
+
+.reason span {
+
+    color: var(--red);
+
+    margin-right: 8px;
+
+}
+
+
+/* ============================================================
+   SCORE
+============================================================ */
+
+.risk-label {
+
+    color: var(--green);
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.score-container {
+
+    padding: 25px;
+
+}
+
+
+.score-bar {
+
+    width: 100%;
+
+    height: 18px;
+
+    background: #080808;
+
+    border:
+        1px solid #292929;
+
+    overflow: hidden;
+
+}
+
+
+.score-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            var(--yellow),
+            var(--orange),
+            var(--red)
+        );
+
+    box-shadow:
+        0 0 15px rgba(255,30,45,0.4);
+
+    transition:
+        width 0.5s ease;
+
+}
+
+
+.score-scale {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    color: #444;
+
+    font-size: 8px;
+
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer {
+
+    padding: 20px 30px;
+
+    border-top: 1px solid #222;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #444;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ============================================================
+   THREAT ACTIVE EFFECT
+============================================================ */
+
+.threat-active .dashboard-title {
+
+    animation:
+        dangerTitle 1.2s infinite;
+
+}
+
+
+@keyframes dangerTitle {
+
+    0%,
+    100% {
+
+        text-shadow:
+            0 0 5px rgba(255,30,45,0.8),
+            0 0 15px rgba(229,9,20,0.6),
+            0 0 30px rgba(229,9,20,0.3);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 8px rgba(255,30,45,1),
+            0 0 25px rgba(229,9,20,0.9),
+            0 0 50px rgba(229,9,20,0.55);
+
+    }
+
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+
+    width: 7px;
+    height: 7px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: #080808;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #3b1114;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--red);
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .full-width {
+
+        grid-column: auto;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .topbar {
+
+        flex-wrap: wrap;
+
+        padding: 15px;
+
+    }
+
+    .system-status {
+
+        order: 3;
+
+        width: 100%;
+
+    }
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+
+        padding:
+            0 15px 20px;
+
+    }
+
+    .dashboard-grid {
+
+        padding:
+            0 15px 30px;
+
+    }
+
+    .dashboard-heading {
+
+        padding:
+            30px 15px 20px;
+
+    }
+
+    .login-card {
+
+        padding:
+            30px 22px;
+
+    }
+
+    .pipeline {
+
+        justify-content: flex-start;
+
+    }
+
+    .kill-chain {
+
+        justify-content: flex-start;
+
+    }
+
+    .footer {
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .main-title {
+
+        letter-spacing: 2px;
+
+    }
+
+    .main-title span {
+
+        letter-spacing: 3px;
+
+    }
+
+    .dashboard-title {
+
+        letter-spacing: 2px;
+
+    }
+
+    .dashboard-title span {
+
+        letter-spacing: 3px;
+
+    }
+
+}
